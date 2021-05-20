@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        std::stack<char> groupings;
+        for(char c : s)
+        {
+            if(c == '(')
+                groupings.push(')');
+            else if(c == '{')
+                groupings.push('}');
+            else if(c == '[')
+                groupings.push(']');
+            else if(groupings.empty() || c != groupings.top())
+                return false;
+            else
+                groupings.pop();
+        }
+        return groupings.empty();
+    }
+};
+
